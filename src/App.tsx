@@ -13,13 +13,11 @@ import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { PilotRequestModal } from './components/PilotRequestModal';
 import { PrivacyModal } from './components/PrivacyModal';
-import { DevelopmentStageModal } from './components/DevelopmentStageModal';
 
 export const App: React.FC = () => {
   const [isPilotModalOpen, setIsPilotModalOpen] = useState(false);
   const [pilotPlanContext, setPilotPlanContext] = useState<string | undefined>(undefined);
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
-  const [isDevStageModalOpen, setIsDevStageModalOpen] = useState(false);
 
   const handleOpenPilotModal = (planContext?: string) => {
     setPilotPlanContext(planContext);
@@ -71,7 +69,6 @@ export const App: React.FC = () => {
       <Footer
         onRequestPilot={() => handleOpenPilotModal()}
         onOpenPrivacy={() => setIsPrivacyModalOpen(true)}
-        onOpenDevStage={() => setIsDevStageModalOpen(true)}
       />
 
       {/* Reusable Modals */}
@@ -84,11 +81,6 @@ export const App: React.FC = () => {
       <PrivacyModal
         isOpen={isPrivacyModalOpen}
         onClose={() => setIsPrivacyModalOpen(false)}
-      />
-
-      <DevelopmentStageModal
-        isOpen={isDevStageModalOpen}
-        onClose={() => setIsDevStageModalOpen(false)}
       />
     </div>
   );

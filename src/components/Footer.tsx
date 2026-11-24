@@ -4,13 +4,11 @@ import { ArrowRight, MapPin } from 'lucide-react';
 interface FooterProps {
   onRequestPilot: () => void;
   onOpenPrivacy: () => void;
-  onOpenDevStage: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onRequestPilot,
-  onOpenPrivacy,
-  onOpenDevStage
+  onOpenPrivacy
 }) => {
   const currentYear = new Date().getFullYear();
 
@@ -29,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({
         {/* 4 Content Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           
-          {/* Column 01: Brand (lg:col-span-4) - Logo icon removed as requested */}
+          {/* Column 01: Brand (lg:col-span-4) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center">
               <span className="text-xl sm:text-2xl font-extrabold font-['Manrope'] text-white tracking-tight">
@@ -40,13 +38,6 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-xs sm:text-sm text-[#E2E8F0]/70 leading-relaxed max-w-sm">
               A proposed BIM-linked immersive approval, specification and change-governance platform for UK interior fit-out and refurbishment.
             </p>
-
-            <div className="pt-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[11px] font-mono bg-[#102748] text-[#E8D5A5] border border-[#C5A044]/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A044]" />
-                UK Pre-MVP Market Validation
-              </span>
-            </div>
           </div>
 
           {/* Column 02: Quick Links (lg:col-span-3) */}
@@ -201,14 +192,6 @@ export const Footer: React.FC<FooterProps> = ({
               className="hover:text-[#E8D5A5] transition-colors underline-offset-4 hover:underline"
             >
               Privacy Information
-            </button>
-            <span>•</span>
-            <button
-              type="button"
-              onClick={onOpenDevStage}
-              className="hover:text-[#E8D5A5] transition-colors underline-offset-4 hover:underline"
-            >
-              Development Stage
             </button>
           </div>
         </div>
