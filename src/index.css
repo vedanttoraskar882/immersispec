@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-navy: #102748;
+  --color-secondary-navy: #0F1C32;
+  --color-muted-gold: #C5A044;
+  --color-light-gold: #E8D5A5;
+  --color-off-white: #F8F9FC;
+  --color-pure-white: #FFFFFF;
+  --color-slate-grey: #64748B;
+  --color-light-border: #E2E8F0;
+  --color-dark-text: #172033;
+  
+  --font-heading: 'Manrope', 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    color: var(--color-dark-text);
+    background-color: var(--color-off-white);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Blueprint grid pattern utility */
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-dark {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.blueprint-grid-gold {
+  background-image: 
+    linear-gradient(to right, rgba(197, 160, 68, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(197, 160, 68, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
