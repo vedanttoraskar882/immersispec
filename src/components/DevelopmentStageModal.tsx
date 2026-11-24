@@ -32,7 +32,7 @@ export const DevelopmentStageModal: React.FC<DevelopmentStageModalProps> = ({ is
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0F1C32]/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070E1A]/80 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby="dev-stage-title"
@@ -42,7 +42,7 @@ export const DevelopmentStageModal: React.FC<DevelopmentStageModalProps> = ({ is
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg bg-white rounded-xl shadow-2xl border border-[#E2E8F0] overflow-hidden my-auto"
+        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] overflow-hidden my-auto"
       >
         <div className="bg-[#102748] text-white px-6 py-5 flex items-center justify-between border-b border-[#0F1C32]">
           <div className="flex items-center gap-2.5">
@@ -68,7 +68,7 @@ export const DevelopmentStageModal: React.FC<DevelopmentStageModalProps> = ({ is
                 Pre-MVP Concept &amp; Market Validation
               </span>
               <p className="text-xs text-[#172033]">
-                ImmersiSpec Twin is currently in active pre-MVP concept development. We are conducting customer discovery interviews and identifying prospective design partners for our upcoming pilot programme.
+                ImmersiSpec Twin is currently in active pre-MVP development and market validation. We are conducting customer discovery interviews and identifying prospective design partners for our upcoming paid pilot programme.
               </p>
             </div>
           </div>
@@ -78,19 +78,19 @@ export const DevelopmentStageModal: React.FC<DevelopmentStageModalProps> = ({ is
             <div>
               <h3 className="font-semibold text-[#102748] mb-1">Indicative Capabilities &amp; Pricing</h3>
               <p className="text-xs text-[#64748B]">
-                All nine planned capabilities, workflow diagrams, dashboard mockups, and pricing tiers showcased on this site represent proposed architectural specifications and commercial planning assumptions. They are being refined through hands-on industry feedback.
+                All nine planned capabilities, workflow diagrams, and pricing tiers showcased on this site represent proposed architectural specifications and commercial planning assumptions. They are being refined through hands-on industry collaboration.
               </p>
             </div>
           </div>
 
           <p className="text-xs text-[#64748B] italic">
-            This landing page serves strictly as an informational platform to gather expressions of interest from UK interior fit-out practices, contractors, and project leaders.
+            Expressions of interest are welcome from UK interior fit-out practices, contractors, and project leaders seeking structured decision governance.
           </p>
 
           <div className="pt-2 flex justify-end">
             <button
               onClick={onClose}
-              className="px-5 py-2 text-xs font-semibold text-white bg-[#102748] hover:bg-[#0F1C32] rounded-lg transition-colors border border-[#C5A044]/40"
+              className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#102748] hover:bg-[#0F1C32] rounded-lg transition-colors border border-[#C5A044]/40"
             >
               Understand
             </button>

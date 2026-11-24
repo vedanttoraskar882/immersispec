@@ -3,6 +3,7 @@
 @theme {
   --color-primary-navy: #102748;
   --color-secondary-navy: #0F1C32;
+  --color-deep-midnight: #070E1A;
   --color-muted-gold: #C5A044;
   --color-light-gold: #E8D5A5;
   --color-off-white: #F8F9FC;
@@ -18,6 +19,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     font-family: var(--font-body);
     color: var(--color-dark-text);
     background-color: var(--color-off-white);
@@ -38,8 +40,8 @@
 
 .blueprint-grid-dark {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -48,4 +50,34 @@
     linear-gradient(to right, rgba(197, 160, 68, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(197, 160, 68, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Glassmorphism surfaces */
+.glass-panel {
+  background: rgba(16, 39, 72, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.12);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Glowing gold accent lines */
+.gold-glow {
+  box-shadow: 0 0 30px -5px rgba(197, 160, 68, 0.3);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

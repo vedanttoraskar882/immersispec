@@ -23,32 +23,16 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer id="footer" className="bg-[#0F1C32] text-white pt-16 pb-12 border-t border-[#102748]">
+    <footer id="footer" className="bg-[#070E1A] text-white pt-16 pb-12 border-t border-[#102748]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 4 Content Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           
-          {/* Column 01: Brand (lg:col-span-4) */}
+          {/* Column 01: Brand (lg:col-span-4) - Logo icon removed as requested */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-7 h-7 rounded bg-[#C5A044] p-[1.5px]">
-                <div className="w-full h-full bg-[#0F1C32] rounded-[2px] flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-[#C5A044]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-              </div>
-              <span className="text-xl font-bold font-['Manrope'] text-white">
+            <div className="flex items-center">
+              <span className="text-xl sm:text-2xl font-extrabold font-['Manrope'] text-white tracking-tight">
                 ImmersiSpec <span className="text-[#C5A044]">Twin</span>
               </span>
             </div>

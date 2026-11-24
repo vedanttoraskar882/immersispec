@@ -63,6 +63,6 @@ export const faqData: FAQItem[] = [
   {
     id: 'faq-12',
     question: 'How can my organisation participate in a pilot?',
-    answer: 'Interested organisations can complete the Request a Pilot form to express their interest in the proposed pilot programme. Submitting the form does not confirm a commercial agreement or guaranteed pilot place. The current website stores submissions locally in the visitor\'s browser and does not transmit them to a server.'
+    answer: 'Interested organisations can complete the Request a Pilot form to express their interest in the upcoming pilot programme. Submitting the form enables our team to evaluate project compatibility, workflow scope, and alignment for early pilot participation.'
   }
 ];

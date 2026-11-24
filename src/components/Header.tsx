@@ -23,9 +23,8 @@ export const Header: React.FC<HeaderProps> = ({ onRequestPilot }) => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Detect current visible section
       const sectionIds = ['home', 'about', 'platform', 'how-it-works', 'market-pricing', 'faq'];
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 130;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const el = document.getElementById(sectionIds[i]);
@@ -39,6 +38,17 @@ export const Header: React.FC<HeaderProps> = ({ onRequestPilot }) => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -54,46 +64,27 @@ export const Header: React.FC<HeaderProps> = ({ onRequestPilot }) => {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#102748]/95 backdrop-blur-md shadow-lg border-b border-[#C5A044]/20 py-3'
+          ? 'bg-[#0F1C32]/95 backdrop-blur-md shadow-lg border-b border-[#C5A044]/20 py-2.5'
           : 'bg-[#102748] border-b border-[#0F1C32] py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo & Name */}
+          
+          {/* Brand Logo - STRICTLY TEXT ONLY (Logo icon removed as requested) */}
           <a
             href="#home"
             onClick={(e) => handleLinkClick(e, '#home')}
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#C5A044] rounded-lg p-1"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#C5A044] rounded py-1 px-1.5 transition-transform duration-200"
+            aria-label="ImmersiSpec Twin Home"
           >
-            {/* Architectural Interconnected Building Element Symbol */}
-            <div className="w-8 h-8 rounded bg-gradient-to-br from-[#C5A044] to-[#0F1C32] p-[1.5px] shadow-sm group-hover:scale-105 transition-transform">
-              <div className="w-full h-full bg-[#102748] rounded-[3px] flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-[#C5A044]"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  {/* Isometric Architectural Cube with Node connection */}
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                  <circle cx="12" cy="12" r="1.5" fill="#E8D5A5" />
-                </svg>
-              </div>
-            </div>
-            <span className="text-xl sm:text-2xl font-bold font-['Manrope'] tracking-tight text-white">
+            <span className="text-xl sm:text-2xl font-extrabold font-['Manrope'] tracking-tight text-white">
               ImmersiSpec <span className="text-[#C5A044]">Twin</span>
             </span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
@@ -101,15 +92,15 @@ export const Header: React.FC<HeaderProps> = ({ onRequestPilot }) => {
                   key={link.id}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-3 py-2 text-sm font-medium rounded-md transition-colors relative ${
+                  className={`px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-200 relative ${
                     isActive
-                      ? 'text-[#E8D5A5]'
+                      ? 'text-[#E8D5A5] bg-white/5 font-semibold'
                       : 'text-white/80 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.name}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-[#C5A044] rounded-full transition-all" />
+                    <span className="absolute bottom-1 left-3.5 right-3.5 h-0.5 bg-[#C5A044] rounded-full shadow-[0_0_8px_#C5A044]" />
                   )}
                 </a>
               );
@@ -120,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({ onRequestPilot }) => {
           <div className="hidden lg:flex items-center space-x-4">
             <button
               onClick={onRequestPilot}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#C5A044] text-[#102748] hover:bg-[#E8D5A5] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#C5A044] focus:ring-offset-2 focus:ring-offset-[#102748]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider bg-[#C5A044] text-[#102748] hover:bg-[#E8D5A5] hover:shadow-[0_0_20px_rgba(197,160,68,0.35)] transition-all duration-200 shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#C5A044] focus:ring-offset-2 focus:ring-offset-[#102748]"
             >
               <span>Request a Pilot</span>
               <ArrowRight className="w-3.5 h-3.5" />

@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Building2, 
   CheckCircle2, 
   Clock, 
   AlertTriangle, 
   FileSpreadsheet, 
-  TrendingUp
+  TrendingUp,
+  Filter
 } from 'lucide-react';
 
 export const PlatformPreview: React.FC = () => {
+  const [statusFilter, setStatusFilter] = useState<'All' | 'Approved' | 'Pending' | 'Reopened'>('All');
+
   const decisions = [
     {
       decision: 'Reception Wall Finish',
@@ -42,19 +45,23 @@ export const PlatformPreview: React.FC = () => {
     }
   ];
 
+  const filteredDecisions = statusFilter === 'All' 
+    ? decisions 
+    : decisions.filter(d => d.status === statusFilter);
+
   return (
     <div className="mt-20 pt-16 border-t border-[#E2E8F0]">
       
       {/* Subsection Title */}
       <div className="max-w-3xl mx-auto text-center space-y-3 mb-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase bg-[#C5A044]/15 text-[#102748] border border-[#C5A044]/30">
-          <span>Conceptual Interface</span>
+          <span>Interface Architecture</span>
         </div>
         <h3 className="text-2xl sm:text-3xl font-bold font-['Manrope'] text-[#102748]">
-          Illustrative Platform Preview
+          Platform Interface Preview
         </h3>
         <p className="text-xs sm:text-sm text-[#64748B]">
-          Conceptual visualization of how design decisions, room completeness and revision drift would be monitored in a structured project environment.
+          Conceptual visualization of how design decisions, room completeness and revision drift are governed in a unified project workspace.
         </p>
       </div>
 
@@ -72,7 +79,7 @@ export const PlatformPreview: React.FC = () => {
                 Active Project View
               </div>
               <h4 className="text-base sm:text-lg font-bold text-white font-['Manrope']">
-                Workplace Fit-Out — Demonstration Project
+                Workplace Fit-Out Project
               </h4>
             </div>
           </div>
@@ -83,7 +90,7 @@ export const PlatformPreview: React.FC = () => {
               Model Active: Revit R04.1
             </span>
             <span className="px-2.5 py-1 rounded text-[11px] font-semibold bg-[#C5A044] text-[#102748]">
-              Illustrative Platform Concept — Simulated Data
+              Platform Interface Preview
             </span>
           </div>
         </div>
@@ -112,7 +119,7 @@ export const PlatformPreview: React.FC = () => {
               <span className="text-2xl font-bold font-mono text-amber-400">5</span>
               <Clock className="w-4 h-4 text-amber-400" />
             </div>
-            <span className="text-[10px] text-amber-300/70 block mt-1">Awaiting client sign-off</span>
+            <span className="text-[10px] text-amber-300/70 block mt-1">Awaiting sign-off</span>
           </div>
 
           <div className="bg-[#102748] rounded-xl p-3.5 border border-rose-500/30">
@@ -121,7 +128,7 @@ export const PlatformPreview: React.FC = () => {
               <span className="text-2xl font-bold font-mono text-rose-400">2</span>
               <AlertTriangle className="w-4 h-4 text-rose-400" />
             </div>
-            <span className="text-[10px] text-rose-300/70 block mt-1">Triggered by R04 model shift</span>
+            <span className="text-[10px] text-rose-300/70 block mt-1">Triggered by R04 shift</span>
           </div>
 
           <div className="bg-[#102748] rounded-xl p-3.5 border border-[#C5A044]/40 col-span-2 sm:col-span-1">
@@ -131,7 +138,7 @@ export const PlatformPreview: React.FC = () => {
               <TrendingUp className="w-4 h-4 text-[#C5A044]" />
             </div>
             {/* Progress bar */}
-            <div className="w-full bg-[#0F1C32] h-2 rounded-full overflow-hidden mt-2 border border-white/10">
+            <div className="w-full bg-[#070E1A] h-2 rounded-full overflow-hidden mt-2 border border-white/10">
               <div className="bg-gradient-to-r from-[#C5A044] to-emerald-400 h-full rounded-full" style={{ width: '71%' }} />
             </div>
           </div>
@@ -150,27 +157,25 @@ export const PlatformPreview: React.FC = () => {
               <span className="text-[10px] font-mono text-[#64748B]">IFC SPATIAL ID: #4092</span>
             </div>
 
-            {/* Simulated 2D Architectural Floor Plan Graphic */}
-            <div className="relative h-56 rounded-lg bg-[#0F1C32] border border-white/10 p-3 flex flex-col justify-between blueprint-grid-gold overflow-hidden">
+            {/* Architectural Floor Plan Graphic */}
+            <div className="relative h-56 rounded-lg bg-[#070E1A] border border-white/10 p-3 flex flex-col justify-between blueprint-grid-gold overflow-hidden">
               <div className="text-[10px] font-mono text-white/50">LEVEL 03 - EXECUTIVE RECEPTION &amp; BOARDROOM</div>
               
               {/* Floor Plan Linework Graphic */}
               <svg className="w-full h-36" viewBox="0 0 300 140" fill="none">
-                {/* Exterior Walls */}
                 <rect x="10" y="10" width="280" height="120" stroke="rgba(255,255,255,0.3)" strokeWidth="2" strokeDasharray="4 2" />
-                {/* Partition Walls */}
                 <line x1="110" y1="10" x2="110" y2="130" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" />
                 <line x1="110" y1="70" x2="290" y2="70" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
                 
-                {/* Reception Wall Element - Highlighted Green (Approved) */}
+                {/* Reception Wall Element - Approved */}
                 <rect x="12" y="12" width="96" height="10" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" strokeWidth="2" />
                 <text x="18" y="20" fill="#10b981" fontSize="7" fontFamily="monospace">BIM-W102 [Approved]</text>
 
-                {/* Meeting Room Furniture - Highlighted Amber (Pending) */}
+                {/* Meeting Room Furniture - Pending */}
                 <circle cx="200" cy="40" r="18" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="2 2" fill="rgba(245, 158, 11, 0.15)" />
                 <text x="175" y="42" fill="#f59e0b" fontSize="7" fontFamily="monospace">BIM-F208 [Pending]</text>
 
-                {/* Flooring Element - Highlighted Red/Orange (Reopened) */}
+                {/* Flooring Element - Reopened */}
                 <rect x="115" y="75" width="170" height="50" fill="rgba(244, 63, 94, 0.15)" stroke="#f43f5e" strokeWidth="1.5" />
                 <text x="145" y="102" fill="#f43f5e" fontSize="7" fontFamily="monospace">BIM-FL034 [Reopened by Drift]</text>
               </svg>
@@ -192,15 +197,32 @@ export const PlatformPreview: React.FC = () => {
               <span className="text-xs font-mono font-semibold text-[#E8D5A5]">
                 Project Decision Register
               </span>
-              <span className="text-[10px] font-mono text-[#64748B]">3 of 24 displayed</span>
+              
+              {/* Filter controls */}
+              <div className="flex items-center gap-1 bg-[#070E1A] p-1 rounded-md border border-white/10 text-[10px]">
+                <Filter className="w-3 h-3 text-[#C5A044] ml-1 mr-0.5" />
+                {(['All', 'Approved', 'Pending', 'Reopened'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setStatusFilter(tab)}
+                    className={`px-2 py-0.5 rounded transition-colors ${
+                      statusFilter === tab
+                        ? 'bg-[#C5A044] text-[#102748] font-bold'
+                        : 'text-[#64748B] hover:text-white'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Decisions List */}
             <div className="space-y-3">
-              {decisions.map((dec, idx) => (
+              {filteredDecisions.map((dec, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#0F1C32] rounded-lg p-3.5 border border-white/10 space-y-2 hover:border-[#C5A044]/50 transition-colors"
+                  className="bg-[#070E1A] rounded-lg p-3.5 border border-white/10 space-y-2 hover:border-[#C5A044]/50 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
@@ -233,8 +255,8 @@ export const PlatformPreview: React.FC = () => {
               ))}
             </div>
 
-            {/* Illustrative Procurement Readiness Overview */}
-            <div className="p-3 bg-[#0F1C32] rounded-lg border border-[#C5A044]/20 flex items-center justify-between text-xs">
+            {/* Procurement Readiness Overview */}
+            <div className="p-3 bg-[#070E1A] rounded-lg border border-[#C5A044]/25 flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
                 <FileSpreadsheet className="w-4 h-4 text-[#C5A044]" />
                 <span className="text-[#E2E8F0]">Procurement Readiness:</span>
@@ -249,7 +271,7 @@ export const PlatformPreview: React.FC = () => {
         {/* Section 11 Visual Explanation: Revision Drift Feedback Flow */}
         <div className="mt-6 pt-5 border-t border-white/10">
           <div className="text-[11px] font-mono uppercase text-[#E8D5A5] mb-3 text-center sm:text-left">
-            Revision Drift Governance Mechanism Example:
+            Revision Drift Governance Mechanism Workflow:
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

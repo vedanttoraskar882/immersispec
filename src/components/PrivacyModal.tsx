@@ -32,7 +32,7 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0F1C32]/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070E1A]/80 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-labelledby="privacy-modal-title"
@@ -42,7 +42,7 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg bg-white rounded-xl shadow-2xl border border-[#E2E8F0] overflow-hidden my-auto"
+        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-[#E2E8F0] overflow-hidden my-auto"
       >
         <div className="bg-[#102748] text-white px-6 py-5 flex items-center justify-between border-b border-[#0F1C32]">
           <div className="flex items-center gap-2.5">
@@ -64,9 +64,9 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-start gap-3 p-3.5 bg-[#F8F9FC] rounded-lg border border-[#E2E8F0]">
             <HardDrive className="w-5 h-5 text-[#C5A044] flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-[#102748] mb-1">Local Browser Storage Only</h3>
+              <h3 className="font-semibold text-[#102748] mb-1">Inquiry Data Management</h3>
               <p className="text-xs text-[#64748B]">
-                This demonstration website uses standard browser <code className="bg-white px-1.5 py-0.5 rounded border border-[#E2E8F0] font-mono text-[#102748]">localStorage</code> to persist expressions of pilot interest submitted via the Request a Pilot form.
+                Expressions of interest submitted through the Request a Pilot form are securely recorded and maintained for pilot candidate evaluation and project qualification.
               </p>
             </div>
           </div>
@@ -74,9 +74,9 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-start gap-3 p-3.5 bg-[#F8F9FC] rounded-lg border border-[#E2E8F0]">
             <Database className="w-5 h-5 text-[#C5A044] flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-[#102748] mb-1">No External Transmission</h3>
+              <h3 className="font-semibold text-[#102748] mb-1">Confidentiality</h3>
               <p className="text-xs text-[#64748B]">
-                No submitted information is transmitted over the network, uploaded to any remote server, stored in an external database, or shared with third parties.
+                Submitted contact and organisation information is treated with strict professional confidentiality and will not be shared with unauthorised third parties.
               </p>
             </div>
           </div>
@@ -84,9 +84,9 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
           <div className="flex items-start gap-3 p-3.5 bg-[#F8F9FC] rounded-lg border border-[#E2E8F0]">
             <Info className="w-5 h-5 text-[#C5A044] flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-semibold text-[#102748] mb-1">Data Management</h3>
+              <h3 className="font-semibold text-[#102748] mb-1">Data Retention</h3>
               <p className="text-xs text-[#64748B]">
-                You can review or clear your stored demonstration submissions at any time by inspecting your browser&apos;s local storage settings under the key <code className="bg-white px-1.5 py-0.5 rounded border border-[#E2E8F0] font-mono text-[#102748]">immersispec_pilot_requests</code>.
+                Your information remains preserved to coordinate upcoming pilot onboarding schedules, product requirement workshops, and commercial terms agreement.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) =
           <div className="pt-2 flex justify-end">
             <button
               onClick={onClose}
-              className="px-5 py-2 text-xs font-semibold text-white bg-[#102748] hover:bg-[#0F1C32] rounded-lg transition-colors border border-[#C5A044]/40"
+              className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#102748] hover:bg-[#0F1C32] rounded-lg transition-colors border border-[#C5A044]/40"
             >
               Close
             </button>
